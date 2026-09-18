@@ -85,7 +85,7 @@ button {
   background-image:
     linear-gradient(90deg, rgba(25, 10, 4, 0.56) 0%, rgba(25, 10, 4, 0.22) 26%, rgba(25, 10, 4, 0) 52%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, 0.18) 100%),
-    url("../images/hero-02.png");
+    url("../images/hero-02.webp");
   background-position: left top, center, 64% center;
   background-repeat: no-repeat;
   background-size: cover, cover, cover;
@@ -96,7 +96,7 @@ button {
   z-index: 1;
   pointer-events: none;
   opacity: 0;
-  background-image: url("../images/hero-01.png");
+  background-image: url("../images/hero-01.webp");
   background-position: 64% center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -738,6 +738,14 @@ button {
   filter: blur(0);
 }
 
+.eyebrow {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
 .eyebrow--dark {
   color: rgba(255, 255, 255, 0.62);
 }
@@ -934,12 +942,6 @@ button {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
   margin-top: 52px;
-}
-
-.comparison-block__actions {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
 }
 
 .comparison-card {
@@ -1801,10 +1803,6 @@ button {
   .comparison-grid {
     margin-top: 34px;
     gap: 18px;
-  }
-
-  .comparison-block__actions {
-    margin-top: 28px;
   }
 
   .comparison-card {

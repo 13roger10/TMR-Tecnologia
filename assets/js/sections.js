@@ -70,7 +70,6 @@
   updateFrame();
 })();
 
-const revealMediaItems = document.querySelectorAll(".reveal-media");
 const revealSideItems = document.querySelectorAll(".reveal-side");
 const revealUpItems = document.querySelectorAll(".reveal-up");
 const revealMarkItems = document.querySelectorAll(".reveal-mark");
@@ -153,13 +152,11 @@ if ("IntersectionObserver" in window) {
     }
   );
 
-  revealMediaItems.forEach((item) => revealObserver.observe(item));
   revealSideItems.forEach((item) => revealObserver.observe(item));
   revealUpItems.forEach((item) => revealObserver.observe(item));
   revealMarkItems.forEach((item) => revealObserver.observe(item));
   revealWriteItems.forEach((item) => revealObserver.observe(item));
 } else {
-  revealMediaItems.forEach((item) => item.classList.add("is-visible"));
   revealSideItems.forEach((item) => item.classList.add("is-visible"));
   revealUpItems.forEach((item) => item.classList.add("is-visible"));
   revealMarkItems.forEach((item) => item.classList.add("is-visible"));
