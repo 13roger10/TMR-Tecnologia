@@ -73,7 +73,6 @@ button {
 .hero__reveal,
 .hero__grid,
 .hero__noise,
-.hero__mask-canvas,
 .hero::before,
 .hero::after {
   position: absolute;
@@ -102,11 +101,9 @@ button {
   background-repeat: no-repeat;
   background-size: cover;
   mask-repeat: no-repeat;
-  mask-size: 100% 100%;
-  mask-position: center;
+  mask-image: radial-gradient(circle 520px at var(--reveal-x, 50%) var(--reveal-y, 50%), rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0.75) 60%, rgba(255, 255, 255, 0.4) 75%, rgba(255, 255, 255, 0.12) 88%, rgba(255, 255, 255, 0) 100%);
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  -webkit-mask-position: center;
+  -webkit-mask-image: radial-gradient(circle 520px at var(--reveal-x, 50%) var(--reveal-y, 50%), rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0.75) 60%, rgba(255, 255, 255, 0.4) 75%, rgba(255, 255, 255, 0.12) 88%, rgba(255, 255, 255, 0) 100%);
   transition: opacity 180ms ease;
 }
 
@@ -160,10 +157,6 @@ button {
   position: absolute;
   inset: 0;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%);
-}
-
-.hero__mask-canvas {
-  display: none;
 }
 
 .hero__nav {
@@ -787,21 +780,24 @@ button {
 
 .services-block__header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 24px;
+  text-align: center;
 }
 
 .services-block__copy {
-  margin: 18px 0 0;
+  margin: 18px auto 0;
   max-width: 640px;
   color: rgba(255, 255, 255, 0.52);
   font-size: 1rem;
   line-height: 1.6;
+  text-align: center;
 }
 
 .services-block__title {
-  margin: 0;
+  margin: 0 auto;
   max-width: 980px;
   font-size: clamp(2.95rem, 5.4vw, 4.7rem);
   line-height: 0.98;
@@ -1142,7 +1138,8 @@ button {
 }
 
 .deliverables-block__header {
-  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .deliverables-block__title {
@@ -1153,6 +1150,7 @@ button {
   letter-spacing: -0.055em;
   font-weight: 300;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .deliverables-grid {
@@ -1184,12 +1182,16 @@ button {
 .deliverable-card__media {
   position: relative;
   width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #0a0a0f;
 }
 
 .deliverable-card__image {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 10px;
 }
 
 .deliverable-card__caption {
@@ -1232,15 +1234,19 @@ button {
 }
 
 .contact-block__inner {
-  width: min(100%, 920px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 32px;
+  width: min(100%, 1180px);
   margin: 0 auto;
 }
 
 .contact-card {
   position: relative;
   overflow: hidden;
-  width: min(100%, 680px);
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   padding: 52px 56px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 28px;
@@ -1332,24 +1338,28 @@ button {
   cursor: pointer;
 }
 
-.contacts-block {
-  padding: 0 48px 132px;
-}
-
-.contacts-block__inner {
-  width: min(100%, var(--max-width));
-  margin: 0 auto;
-}
-
 .contacts-card {
-  display: grid;
-  grid-template-columns: 230px minmax(0, 1fr);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 42px;
-  padding: 42px 48px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  justify-content: flex-start;
+  gap: 28px;
+  width: 100%;
+  padding: 52px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 28px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.032) 0%, rgba(255, 255, 255, 0.015) 100%);
+  background: radial-gradient(circle at top center, rgba(255, 255, 255, 0.11) 0%, transparent 38%), linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.022) 100%);
+  text-align: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 24px 54px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(10px);
+}
+
+.contacts-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .contacts-seal {
@@ -1364,8 +1374,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 178px;
-  height: 178px;
+  width: 150px;
+  height: 150px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 50%;
   background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.012) 58%, transparent 60%);
@@ -1384,8 +1394,8 @@ button {
 
 .contacts-seven {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 84px;
+  height: 84px;
   display: grid;
   place-items: center;
   transform-style: preserve-3d;
@@ -1398,7 +1408,7 @@ button {
   inset: 0;
   display: grid;
   place-items: center;
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   line-height: 1;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -1419,11 +1429,11 @@ button {
 
 .contacts-seven__glow {
   position: absolute;
-  width: 118px;
-  height: 28px;
+  width: 96px;
+  height: 24px;
   border-radius: 999px;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.06) 48%, transparent 72%);
-  transform: translateY(52px) rotateX(78deg);
+  transform: translateY(44px) rotateX(78deg);
   filter: blur(6px);
 }
 
@@ -1449,15 +1459,17 @@ button {
 .contacts-card__title {
   margin: 16px 0 0;
   color: #f4f4f2;
-  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
   font-weight: 300;
+  text-transform: uppercase;
 }
 
 .contacts-list {
   list-style: none;
   display: grid;
+  justify-items: center;
   gap: 14px;
   margin: 26px 0 0;
   padding: 0;
@@ -1466,8 +1478,15 @@ button {
 .contacts-list__item {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+.contacts-list__item--social {
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
 }
 
 .contacts-list__label {
@@ -1488,6 +1507,30 @@ button {
 .contacts-list__value:hover,
 .contacts-list__value:focus-visible {
   color: rgba(255, 255, 255, 0.7);
+}
+
+.contacts-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.012) 58%, transparent 60%);
+  color: #f4f4f2;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.contacts-social svg {
+  width: 34px;
+  height: 34px;
+}
+
+.contacts-social:hover,
+.contacts-social:focus-visible {
+  color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.28);
 }
 
 .faq-block {
@@ -1516,7 +1559,8 @@ button {
 }
 
 .faq-list {
-  margin-top: 42px;
+  max-width: 700px;
+  margin: 42px auto 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -1653,18 +1697,21 @@ button {
     padding: 88px 24px 96px;
   }
 
+  .contact-block__inner {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+  }
+
   .contact-card {
     padding: 40px 32px;
   }
 
-  .contacts-block {
-    padding: 0 24px 96px;
+  .contacts-card {
+    padding: 36px 32px;
   }
 
-  .contacts-card {
-    grid-template-columns: 1fr;
-    justify-items: start;
-    padding: 36px 32px;
+  .deliverables-block__title {
+    white-space: normal;
   }
 
   .faq-block {
@@ -1700,11 +1747,6 @@ button {
 
   .services-block {
     padding: 40px 16px 64px;
-  }
-
-  .services-block__header {
-    align-items: flex-start;
-    flex-direction: column;
   }
 
   .services-block__title {
@@ -1796,6 +1838,7 @@ button {
   }
 
   .deliverables-block__title {
+    white-space: normal;
     font-size: clamp(2.5rem, 12vw, 3.8rem);
   }
 
@@ -1855,15 +1898,9 @@ button {
     font-size: 0.82rem;
   }
 
-  .contacts-block {
-    padding: 0 16px 76px;
-  }
-
   .contacts-card {
     gap: 28px;
     padding: 28px 22px;
-    justify-items: center;
-    text-align: center;
   }
 
   .contacts-seal__ring {

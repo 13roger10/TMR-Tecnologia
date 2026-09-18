@@ -28,15 +28,12 @@ if (navToggle && navMenu) {
 const hero = document.querySelector(".hero");
 const background = document.querySelector(".hero__background");
 const revealLayer = document.querySelector(".hero__reveal");
-const maskCanvas = document.querySelector(".hero__mask-canvas");
 const gridPattern = document.querySelector("#grid");
 
-if (hero && background && revealLayer && maskCanvas && gridPattern) {
-  const context = maskCanvas.getContext("2d");
+if (hero && background && revealLayer && gridPattern) {
   const supportsFinePointer = window.matchMedia("(pointer:fine)").matches;
   const rawMouse = { x: 0, y: 0 };
   const smoothMouse = { x: 0, y: 0 };
-  const cursorPos = { x: 0, y: 0 };
   const gridOffset = { x: 0, y: 0 };
   let isHovering = false;
   let frameId = 0;
@@ -50,65 +47,17 @@ if (hero && background && revealLayer && maskCanvas && gridPattern) {
     rawMouse.y = centerY;
     smoothMouse.x = centerX;
     smoothMouse.y = centerY;
-    cursorPos.x = centerX;
-    cursorPos.y = centerY;
-  };
-
-  const resizeCanvas = () => {
-    maskCanvas.width = window.innerWidth;
-    maskCanvas.height = window.innerHeight;
   };
 
   const clearReveal = () => {
-    if (!context) {
-      return;
-    }
-
-    context.clearRect(0, 0, maskCanvas.width, maskCanvas.height);
-    revealLayer.style.maskImage = "none";
-    revealLayer.style.webkitMaskImage = "none";
     hero.classList.remove("hero--hovering");
-  };
-
-  const drawReveal = (cursorX, cursorY) => {
-    if (!context) {
-      return;
-    }
-
-    context.clearRect(0, 0, maskCanvas.width, maskCanvas.height);
-
-    const gradient = context.createRadialGradient(
-      cursorX,
-      cursorY,
-      0,
-      cursorX,
-      cursorY,
-      520
-    );
-
-    gradient.addColorStop(0, "rgba(255,255,255,1)");
-    gradient.addColorStop(0.4, "rgba(255,255,255,1)");
-    gradient.addColorStop(0.6, "rgba(255,255,255,0.75)");
-    gradient.addColorStop(0.75, "rgba(255,255,255,0.4)");
-    gradient.addColorStop(0.88, "rgba(255,255,255,0.12)");
-    gradient.addColorStop(1, "rgba(255,255,255,0)");
-
-    context.beginPath();
-    context.arc(cursorX, cursorY, 520, 0, Math.PI * 2);
-    context.fillStyle = gradient;
-    context.fill();
-
-    const maskDataUrl = maskCanvas.toDataURL();
-    revealLayer.style.maskImage = `url("${maskDataUrl}")`;
-    revealLayer.style.webkitMaskImage = `url("${maskDataUrl}")`;
-    hero.classList.add("hero--hovering");
   };
 
   const animate = () => {
     frameId = window.requestAnimationFrame(animate);
 
-    smoothMouse.x += (rawMouse.x - smoothMouse.x) * 0.1;
-    smoothMouse.y += (rawMouse.y - smoothMouse.y) * 0.1;
+    smoothMouse.x += (rawMouse.x - smoothMouse.x) * 0.35;
+    smoothMouse.y += (rawMouse.y - smoothMouse.y) * 0.35;
 
     const rect = hero.getBoundingClientRect();
     const cx = (smoothMouse.x - rect.left) / rect.width - 0.5;
@@ -117,9 +66,6 @@ if (hero && background && revealLayer && maskCanvas && gridPattern) {
     gridOffset.x += (cx * 16 - gridOffset.x) * 0.06;
     gridOffset.y += (cy * 16 - gridOffset.y) * 0.06;
 
-    cursorPos.x = smoothMouse.x;
-    cursorPos.y = smoothMouse.y;
-
     gridPattern.setAttribute("x", gridOffset.x.toFixed(2));
     gridPattern.setAttribute("y", gridOffset.y.toFixed(2));
 
@@ -127,15 +73,15 @@ if (hero && background && revealLayer && maskCanvas && gridPattern) {
     revealLayer.style.transform = `scale(1.03) translate(${cx * -14}px, ${cy * -10}px)`;
 
     if (supportsFinePointer && isHovering) {
-      drawReveal(cursorPos.x, cursorPos.y);
+      revealLayer.style.setProperty("--reveal-x", `${smoothMouse.x - rect.left}px`);
+      revealLayer.style.setProperty("--reveal-y", `${smoothMouse.y - rect.top}px`);
+      hero.classList.add("hero--hovering");
     } else {
       clearReveal();
     }
   };
 
-  resizeCanvas();
   setHeroCenter();
-  clearReveal();
   hero.classList.add("hero--ready");
 
   if (supportsFinePointer) {
@@ -160,8 +106,6 @@ if (hero && background && revealLayer && maskCanvas && gridPattern) {
   }
 
   window.addEventListener("resize", () => {
-    resizeCanvas();
-
     if (!isHovering) {
       setHeroCenter();
       clearReveal();
