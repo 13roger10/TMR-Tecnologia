@@ -322,7 +322,7 @@ button {
   display: grid;
   gap: 24px;
   padding-right: 4px;
-  margin-bottom: 28px;
+  margin-bottom: 100px;
 }
 
 .stat {
@@ -517,6 +517,17 @@ button {
     flex-direction: column;
     align-items: flex-end;
     gap: 20px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  .hero__nav-menu ul::before {
+    display: none;
   }
 
   .hero__shell {
