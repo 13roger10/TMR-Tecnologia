@@ -1,0 +1,464 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TMR-Tecnologia</title>
+    <link rel="preload" as="image" href="assets/images/hero-01.webp" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body id="top">
+    <video
+      class="page-sequence"
+      aria-hidden="true"
+      muted
+      playsinline
+      preload="none"
+    >
+      <source src="assets/video/video-scrub1-hq.mp4" type="video/mp4" />
+    </video>
+
+    <header class="hero__nav">
+      <button
+        class="hero__nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-menu"
+        aria-label="Abrir menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="hero__nav-menu" id="primary-menu" aria-label="Menu principal">
+        <ul>
+          <li><a href="#top">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#perguntas">Perguntas</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Hero principal">
+        <div class="hero__background" aria-hidden="true"></div>
+        <div class="hero__reveal" aria-hidden="true">
+          <div class="hero__reveal-spot">
+            <div class="hero__reveal-image"></div>
+          </div>
+        </div>
+
+        <svg
+          class="hero__grid"
+          aria-hidden="true"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <pattern
+              id="grid"
+              width="48"
+              height="48"
+              patternUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+            >
+              <path
+                d="M 48 0 L 0 0 0 48"
+                fill="none"
+                stroke="#64748b"
+                stroke-width="0.6"
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+
+        <div class="hero__noise" aria-hidden="true"></div>
+        <div class="hero__blur-transition" aria-hidden="true"></div>
+
+        <div class="hero__shell">
+          <div class="hero__content">
+            <div class="hero__copy">
+              <img class="hero__logo" src="assets/images/logo1.webp" alt="TMR Solution — Soluções inteligentes. Resultados reais." />
+              <img class="hero__icon1" src="assets/images/icone1.webp" alt="Desenvolvimento Web, Desenvolvimento de Software, Aplicativos Mobile, Soluções SaaS, Land Pages de alto desempenho, Integração com Inteligência Artificial" />
+            </div>
+
+            <aside class="hero__stats" aria-label="Indicadores">
+              <div class="stat">
+                <strong>Profissionais</strong>
+                <span>Experientes</span>
+              </div>
+              <div class="stat">
+                <strong>Segurança</strong>
+                <span>Comprometimento</span>
+              </div>
+              <div class="stat">
+                <strong>Agilidade</strong>
+                <span>Na entrega das demandas</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-dark about-block" id="sobre" aria-labelledby="about-title">
+        <div class="about-block__blur-transition" aria-hidden="true"></div>
+
+        <div class="about-block__inner">
+          <div class="about-block__content reveal-side">
+            <h2 class="about-block__title" id="about-title">
+              CRIE SOLUÇÕES DIGITAIS QUE<br />
+              VENDAM DE VERDADE
+            </h2>
+            <div class="about-block__tags" aria-label="Categorias">
+              <span class="tag">tecnologia</span>
+              <span class="tag">segurança</span>
+              <span class="tag">resultado real</span>
+            </div>
+            <p class="about-block__copy">
+              Transformamos ideias em soluções digitais que geram resultados. Criamos sites, landpages e sistemas web modernos, seguros e personalizados para automatizar processos, aumentar a eficiência e impulsionar o crescimento da sua empresa.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-dark services-block" id="servicos" aria-labelledby="services-title">
+        <div class="services-block__inner">
+          <div class="services-block__header">
+            <h2 class="services-block__title" id="services-title">NOSSOS SERVIÇOS</h2>
+          </div>
+          <p class="services-block__copy">
+              Soluções web que transformam seu negócio. Desenvolvemos sites e sistemas modernos, seguros e escaláveis, do planejamento à implantação, com foco em performance, experiência do usuário e resultados reais para sua empresa.
+          </p>
+          <div class="services-grid">
+            <article class="service-card reveal-up">
+              <div class="service-card__media">
+                <img src="assets/images/servico1.webp" alt="Consultoria" loading="lazy" />
+              </div>
+              <h3 class="service-card__title">Consultoria</h3>
+              <p class="service-card__copy">
+                Orientação técnica especializada para planejar, evoluir e escalar suas soluções de software com segurança.
+              </p>
+            </article>
+
+            <article class="service-card reveal-up">
+              <div class="service-card__media">
+                <img src="assets/images/servico2.webp" alt="Inteligência Artificial" loading="lazy" />
+              </div>
+              <h3 class="service-card__title">Inteligência Artificial</h3>
+              <p class="service-card__copy">
+                Aplicação de IA para automatizar processos, gerar insights e impulsionar a eficiência do seu negócio.
+              </p>
+            </article>
+
+            <article class="service-card reveal-up">
+              <div class="service-card__media">
+                <img src="assets/images/servico3.webp" alt="Automação" loading="lazy" />
+              </div>
+              <h3 class="service-card__title">Automação</h3>
+              <p class="service-card__copy">
+                Automatizamos tarefas e fluxos para reduzir custos, erros operacionais e aumentar a produtividade.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-dark comparison-block" aria-labelledby="comparison-title">
+        <div class="comparison-block__inner">
+          <div class="comparison-block__intro">
+            <h2 class="comparison-block__title" id="comparison-title">VEJA A DIFERENÇA NA PRÁTICA</h2>
+          </div>
+
+          <div class="comparison-grid">
+            <article class="comparison-card comparison-card--negative">
+              <div class="comparison-card__head">
+                <h3 class="comparison-card__title">Sem a TMR Solution</h3>
+              </div>
+
+              <ul class="comparison-list">
+                <li class="comparison-list__item reveal-mark">
+                  <span>Demora para entregar resultados</span>
+                </li>
+                <li class="comparison-list__item reveal-mark">
+                  <span>Falta de processo estruturado</span>
+                </li>
+                <li class="comparison-list__item reveal-mark">
+                  <span>Decisões baseadas em improviso</span>
+                </li>
+                <li class="comparison-list__item reveal-mark">
+                  <span>Mais desgaste e menos produção</span>
+                </li>
+              </ul>
+            </article>
+
+            <article class="comparison-card comparison-card--light comparison-card--positive">
+              <div class="comparison-card__head">
+                <h3 class="comparison-card__title">Com a TMR Solution</h3>
+              </div>
+
+              <ul class="comparison-list">
+                <li class="comparison-list__item reveal-mark">
+                  <span>Entrega mais rápida e estruturada</span>
+                </li>
+                <li class="comparison-list__item reveal-mark">
+                  <span>Processo claro do início ao fim</span>
+                </li>
+                <li class="comparison-list__item reveal-mark">
+                  <span>Uso estratégico de tecnologia</span>
+                </li>
+                <li class="comparison-list__item reveal-mark">
+                  <span>Mais resultado com menos esforço operacional</span>
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-dark quote-block" aria-labelledby="quote-title">
+        <div class="quote-block__inner">
+          <article class="quote-panel">
+            <h2 class="quote-panel__text reveal-write" id="quote-title">
+              Você não vai apenas contratar um serviço,
+              <em>vai ganhar um parceiro de verdade.</em>
+              O foco é transformar tecnologia em resultado real para o seu negócio.
+            </h2>
+            <p class="quote-panel__meta reveal-write reveal-write--delay">
+              Mais que um serviço, uma parceria de verdade para transformar tecnologia em resultados reais para o seu negócio.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projetos" class="section-light deliverables-block" aria-labelledby="deliverables-title">
+        <div class="deliverables-block__inner">
+          <div class="deliverables-block__header">
+            <h2 class="deliverables-block__title" id="deliverables-title">
+              Nossos Projetos
+            </h2>
+          </div>
+
+          <div class="deliverables-grid">
+            <article class="deliverable-card reveal-up">
+              <div class="deliverable-card__media">
+                <img class="deliverable-card__image" src="assets/images/i1.webp" alt="Entregável 1." />
+              </div>
+              <div class="deliverable-card__caption">
+                <h3 class="deliverable-card__title">Mandato Eleitoral</h3>
+                <p class="deliverable-card__description">O Mandato Eleitoral é uma plataforma criada para ajudar candidatos e suas equipes a organizarem melhor uma campanha política. Imagine ter em um único lugar os nomes das pessoas que apoiam sua candidatura, eleitores, lideranças e contatos importantes, sem precisar ficar controlando tudo em cadernos, planilhas ou várias ferramentas diferentes.</p>
+                <a class="button button--offer deliverable-card__cta" href="https://mandatoeleitoral.com.br/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaeDUFu84frqN1T_1xu_NQPxx1LbQCmempcikoI6xXRuB5szpXkYkJq2keGqWA_aem_tlKkIEMDMoACXr_tral-HA" target="_blank" rel="noopener noreferrer">Acessar</a>
+              </div>
+            </article>
+
+            <article class="deliverable-card deliverable-card--offset reveal-up">
+              <div class="deliverable-card__media">
+                <img class="deliverable-card__image" src="assets/images/i2.webp" alt="Entregável 2." />
+              </div>
+              <div class="deliverable-card__caption">
+                <h3 class="deliverable-card__title">Sistema Salão</h3>
+                <p class="deliverable-card__description">Cada projeto é único. Criamos sistemas personalizados, alinhados às necessidades do seu negócio e preparados para crescer junto com ele.</p>
+                <a class="button button--offer deliverable-card__cta" href="#" target="_blank" rel="noopener noreferrer">Acessar</a>
+              </div>
+            </article>
+
+            <article class="deliverable-card reveal-up">
+              <div class="deliverable-card__media">
+                <img class="deliverable-card__image" src="assets/images/i3.webp" alt="Entregável 3." />
+              </div>
+              <div class="deliverable-card__caption">
+                <h3 class="deliverable-card__title">Sistema Academia</h3>
+                <p class="deliverable-card__description">Utilizamos boas práticas, arquitetura sólida e tecnologias modernas para garantir segurança, performance e escalabilidade em cada solução.</p>
+                <a class="button button--offer deliverable-card__cta" href="#" target="_blank" rel="noopener noreferrer">Acessar</a>
+              </div>
+            </article>
+
+            <article class="deliverable-card deliverable-card--offset reveal-up">
+              <div class="deliverable-card__media">
+                <img class="deliverable-card__image" src="assets/images/i4.webp" alt="Entregável 4." />
+              </div>
+              <div class="deliverable-card__caption">
+                <h3 class="deliverable-card__title">LandPages Profissional</h3>
+                <p class="deliverable-card__description">Substitua pela descrição real deste entregável.</p>
+                <a class="button button--offer deliverable-card__cta" href="#" target="_blank" rel="noopener noreferrer">Acessar</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-dark contact-block" id="contato" aria-labelledby="contact-title">
+        <div class="contact-block__inner">
+          <article class="contact-card">
+            <span class="contact-card__eyebrow">Contato</span>
+            <h2 class="contact-card__title" id="contact-title">Solicite uma Solução</h2>
+            <p class="contact-card__copy">Conte-nos sobre a sua ideia ou necessidade. Nossa equipe de desenvolvimento analisará o seu projeto e entrará em contato para propor a melhor solução tecnológica, seja um site, sistema web ou aplicação personalizada, totalmente alinhada aos objetivos do seu negócio.</p>
+
+            <form class="contact-form">
+              <div class="contact-form__row">
+                <div class="contact-form__field">
+                  <input type="text" name="nome" placeholder="Nome" autocomplete="name" required />
+                </div>
+                <div class="contact-form__field">
+                  <input type="email" name="email" placeholder="Email" autocomplete="email" required />
+                </div>
+              </div>
+
+              <div class="contact-form__field contact-form__field--full">
+                <input type="tel" name="whatsapp" placeholder="Celular (WhatsApp)" autocomplete="tel" required />
+              </div>
+
+              <div class="contact-form__field contact-form__field--full">
+                <textarea name="mensagem" placeholder="Mensagem" rows="4" required></textarea>
+              </div>
+
+              <button class="button button--offer" type="submit">Enviar mensagem</button>
+            </form>
+          </article>
+          <article class="contacts-card">
+              <span class="contacts-card__eyebrow">Contato</span>
+            <div class="contacts-seal" aria-hidden="true">
+              <div class="contacts-seal__ring">
+                <div class="contacts-seven">
+                  <span class="contacts-seven__back">TMR</span>
+                  <span class="contacts-seven__front">TMR</span>
+                  <span class="contacts-seven__glow"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contacts-card__content">
+              <h3 class="contacts-card__title" id="contacts-title">Entre em contato</h3>
+
+              <ul class="contacts-list">
+                <li class="contacts-list__item">
+                  <span class="contacts-list__label">Telefone:</span>
+                  <a class="contacts-list__value" href="tel:+5561983605357">(61) 98360-5357</a>
+                </li>
+                <li class="contacts-list__item">
+                  <span class="contacts-list__label">WhatsApp:</span>
+                  <a class="contacts-list__value" href="https://wa.me/5561983605357" target="_blank" rel="noopener noreferrer">(61) 98360-5357</a>
+                </li>
+                <li class="contacts-list__item">
+                  <span class="contacts-list__label">Email:</span>
+                  <a class="contacts-list__value" href="mailto:tmrtecnologiainovacao@gmail.com">tmrtecnologiainovacao@gmail.com</a>
+                </li>
+              </ul>
+
+              <ul class="contacts-social" aria-label="Redes sociais">
+                <li>
+                  <a class="contacts-social__link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <span class="contacts-seal contacts-seal--sm" aria-hidden="true">
+                      <span class="contacts-seal__ring">
+                        <span class="contacts-seven">
+                          <svg class="contacts-seven__back" viewBox="0 0 24 24"><use href="#icon-instagram" /></svg>
+                          <svg class="contacts-seven__front" viewBox="0 0 24 24"><use href="#icon-instagram" /></svg>
+                          <span class="contacts-seven__glow"></span>
+                        </span>
+                      </span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="contacts-social__link" href="https://wa.me/5561983605357" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <span class="contacts-seal contacts-seal--sm" aria-hidden="true">
+                      <span class="contacts-seal__ring">
+                        <span class="contacts-seven">
+                          <svg class="contacts-seven__back" viewBox="0 0 24 24"><use href="#icon-whatsapp" /></svg>
+                          <svg class="contacts-seven__front" viewBox="0 0 24 24"><use href="#icon-whatsapp" /></svg>
+                          <span class="contacts-seven__glow"></span>
+                        </span>
+                      </span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="contacts-social__link" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <span class="contacts-seal contacts-seal--sm" aria-hidden="true">
+                      <span class="contacts-seal__ring">
+                        <span class="contacts-seven">
+                          <svg class="contacts-seven__back" viewBox="0 0 24 24"><use href="#icon-facebook" /></svg>
+                          <svg class="contacts-seven__front" viewBox="0 0 24 24"><use href="#icon-facebook" /></svg>
+                          <span class="contacts-seven__glow"></span>
+                        </span>
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+
+              <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+                <defs>
+                  <symbol id="icon-instagram" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="18" rx="5.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" />
+                  </symbol>
+                  <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+                    <path d="M3.4 20.6l1.3-4.5A8.7 8.7 0 1 1 8 19.3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                    <path d="M9.4 7.9c.3-.5.6-.5.9-.5h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .4-.1.6l-.5.6c-.1.1-.1.3 0 .4a6.2 6.2 0 0 0 2.6 2.4c.2.1.3.1.5-.1l.7-.8c.1-.2.3-.2.5-.1l1.6.8c.2.1.3.3.3.5-.1 1-.9 1.8-2 1.8-1.4 0-3.3-.8-4.8-2.3-1.5-1.5-2.3-3.1-2.3-4.4 0-.9.4-1.5.9-1.9z" fill="currentColor" />
+                  </symbol>
+                  <symbol id="icon-facebook" viewBox="0 0 24 24">
+                    <path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.6V3.4c-.3 0-1.2-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.4H7.5V13h2.8v8h3.2z" fill="currentColor" />
+                  </symbol>
+                </defs>
+              </svg>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="perguntas" class="section-dark faq-block" aria-labelledby="faq-title">
+        <div class="faq-block__inner">
+          <div class="faq-block__header">
+            <span class="eyebrow eyebrow--dark">FAQ</span>
+            <h2 class="faq-block__title" id="faq-title">PERGUNTAS FREQUENTES</h2>
+          </div>
+
+          <div class="faq-list" role="list">
+            <article class="faq-item" role="listitem">
+              <button class="faq-item__trigger" type="button" aria-expanded="false">
+                <span class="faq-item__question">Substitua pela pergunta 1</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-item__answer" hidden>
+                <p>Substitua pela resposta 1.</p>
+              </div>
+            </article>
+
+            <article class="faq-item" role="listitem">
+              <button class="faq-item__trigger" type="button" aria-expanded="false">
+                <span class="faq-item__question">Substitua pela pergunta 2</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-item__answer" hidden>
+                <p>Substitua pela resposta 2.</p>
+              </div>
+            </article>
+
+            <article class="faq-item" role="listitem">
+              <button class="faq-item__trigger" type="button" aria-expanded="false">
+                <span class="faq-item__question">Substitua pela pergunta 3</span>
+                <span class="faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-item__answer" hidden>
+                <p>Substitua pela resposta 3.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-minimal">
+      <p>© Copyright © 2026 TMR Tecnologia – Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/sections.js"></script>
+  </body>
+</html>
