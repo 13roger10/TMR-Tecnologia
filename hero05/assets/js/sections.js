@@ -8,13 +8,14 @@
 
   let duration = 0;
   let lastTime = -1;
-  const minDelta = 1 / 48;
+  let targetTime = 0;
+  let seekInFlight = false;
+  // O vídeo é codificado a 15fps: não faz sentido buscar um novo tempo
+  // com diferença menor que a duração de um frame.
+  const minDelta = 1 / 15;
 
-  function seekTo(time) {
-    if (Math.abs(time - lastTime) < minDelta) {
-      return;
-    }
-
+  function performSeek(time) {
+    seekInFlight = true;
     lastTime = time;
 
     if (typeof video.fastSeek === "function") {
@@ -23,6 +24,32 @@
       video.currentTime = time;
     }
   }
+
+  // Nunca disparamos um novo seek antes do anterior terminar: em scroll
+  // rápido isso empilha pedidos mais rápido do que o navegador decodifica,
+  // travando o vídeo. Guardamos só o alvo mais recente e seguimos para ele
+  // assim que o seek em andamento terminar (evento "seeked").
+  function seekTo(time) {
+    targetTime = time;
+
+    if (seekInFlight) {
+      return;
+    }
+
+    if (Math.abs(time - lastTime) < minDelta) {
+      return;
+    }
+
+    performSeek(time);
+  }
+
+  video.addEventListener("seeked", () => {
+    seekInFlight = false;
+
+    if (Math.abs(targetTime - lastTime) >= minDelta) {
+      performSeek(targetTime);
+    }
+  });
 
   function updateFrame() {
     if (!duration) {
