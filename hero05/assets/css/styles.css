@@ -61,6 +61,93 @@ button {
   cursor: pointer;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+body.is-loading {
+  overflow: hidden;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background: var(--bg);
+  opacity: 1;
+  transition: opacity 500ms ease;
+}
+
+.preloader.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.preloader__seal .contacts-seal__ring {
+  width: 110px;
+  height: 110px;
+  box-shadow: inset 0 0 0 12px rgba(255, 255, 255, 0.015), 0 18px 36px rgba(0, 0, 0, 0.26);
+}
+
+.preloader__seal .contacts-seven {
+  width: 62px;
+  height: 62px;
+}
+
+.preloader__seal .contacts-seven__back,
+.preloader__seal .contacts-seven__front {
+  font-size: 1.05rem;
+}
+
+.preloader__seal .contacts-seven__glow {
+  width: 70px;
+  height: 18px;
+  transform: translateY(32px) rotateX(78deg);
+}
+
+.preloader__bar {
+  position: relative;
+  width: 160px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.preloader__bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+  animation: preloader-bar-slide 1.1s ease-in-out infinite;
+}
+
+@keyframes preloader-bar-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(350%);
+  }
+}
+
 .hero {
   position: relative;
   min-height: 100svh;

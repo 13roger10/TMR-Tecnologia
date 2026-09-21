@@ -7,7 +7,23 @@
     <link rel="preload" as="image" href="assets/images/hero-01.webp" />
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
-  <body id="top">
+  <body id="top" class="is-loading">
+    <div class="preloader" id="preloader" role="status" aria-live="polite">
+      <span class="visually-hidden">Carregando o site…</span>
+      <div class="preloader__seal contacts-seal" aria-hidden="true">
+        <div class="contacts-seal__ring">
+          <div class="contacts-seven">
+            <span class="contacts-seven__back">TMR</span>
+            <span class="contacts-seven__front">TMR</span>
+            <span class="contacts-seven__glow"></span>
+          </div>
+        </div>
+      </div>
+      <div class="preloader__bar" aria-hidden="true">
+        <span class="preloader__bar-fill"></span>
+      </div>
+    </div>
+
     <video
       class="page-sequence"
       aria-hidden="true"
@@ -458,6 +474,7 @@
       <p>© Copyright © 2026 TMR Tecnologia – Todos os direitos reservados.</p>
     </footer>
 
+    <script src="assets/js/preloader.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/sections.js"></script>
   </body>
