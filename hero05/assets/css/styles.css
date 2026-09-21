@@ -95,7 +95,8 @@ button {
 .hero__reveal {
   z-index: 1;
   pointer-events: none;
-  opacity: 0;
+  opacity: 0.001;
+  will-change: opacity;
 }
 
 .hero__reveal-spot {
