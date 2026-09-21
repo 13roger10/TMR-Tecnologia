@@ -1543,7 +1543,7 @@ button {
   display: flex;
   justify-content: center;
   gap: 22px;
-  margin: 30px 0 0;
+  margin: 46px 0 0;
   padding: 0;
 }
 
@@ -1569,8 +1569,8 @@ button {
 }
 
 .contacts-seal--sm .contacts-seal__ring {
-  width: 76px;
-  height: 76px;
+  width: 86px;
+  height: 86px;
   box-shadow: inset 0 0 0 9px rgba(255, 255, 255, 0.015), 0 10px 20px rgba(0, 0, 0, 0.26);
   transition: border-color 220ms ease;
 }
@@ -1580,14 +1580,14 @@ button {
 }
 
 .contacts-seal--sm .contacts-seven {
-  width: 44px;
-  height: 44px;
+  width: 50px;
+  height: 50px;
 }
 
 .contacts-seal--sm .contacts-seven__back,
 .contacts-seal--sm .contacts-seven__front {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   margin: auto;
 }
 
@@ -1603,9 +1603,9 @@ button {
 }
 
 .contacts-seal--sm .contacts-seven__glow {
-  width: 52px;
-  height: 14px;
-  transform: translateY(24px) rotateX(78deg);
+  width: 58px;
+  height: 15px;
+  transform: translateY(27px) rotateX(78deg);
   filter: blur(4px);
 }
 
