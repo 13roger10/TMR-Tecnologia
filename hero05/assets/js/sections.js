@@ -1,90 +1,77 @@
 (() => {
-  const video = document.querySelector(".page-sequence");
+  const canvas = document.querySelector(".page-sequence");
   const startMarker = document.querySelector(".about-block");
 
-  if (!video || !startMarker) {
+  if (!canvas || !startMarker || !window.scrubFrames) {
     return;
   }
 
-  let duration = 0;
-  let lastTime = -1;
-  let targetTime = 0;
-  let seekInFlight = false;
-  // O vídeo é codificado a 15fps: não faz sentido buscar um novo tempo
-  // com diferença menor que a duração de um frame.
-  const minDelta = 1 / 15;
+  const ctx = canvas.getContext("2d");
+  const { images, count } = window.scrubFrames;
+  let framesReady = false;
+  let lastFrameIndex = -1;
 
-  function performSeek(time) {
-    seekInFlight = true;
-    lastTime = time;
+  // startMarker.offsetTop e scrollHeight forçam o navegador a recalcular
+  // layout quando lidos. Só recalculamos quando o layout realmente pode
+  // ter mudado (carregamento e resize), não a cada frame de scroll.
+  let startY = 0;
+  let activationY = 0;
+  let totalScrollable = 0;
 
-    if (typeof video.fastSeek === "function") {
-      video.fastSeek(time);
-    } else {
-      video.currentTime = time;
-    }
+  function computeLayout() {
+    startY = startMarker.offsetTop;
+    activationY = startY * 0.8;
+    totalScrollable = document.documentElement.scrollHeight - window.innerHeight - startY;
   }
 
-  // Nunca disparamos um novo seek antes do anterior terminar: em scroll
-  // rápido isso empilha pedidos mais rápido do que o navegador decodifica,
-  // travando o vídeo. Guardamos só o alvo mais recente e seguimos para ele
-  // assim que o seek em andamento terminar (evento "seeked").
-  function seekTo(time) {
-    targetTime = time;
+  function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(window.innerWidth * dpr);
+    canvas.height = Math.round(window.innerHeight * dpr);
+  }
 
-    if (seekInFlight) {
+  // Desenha a imagem já decodificada cobrindo o canvas inteiro (equivalente
+  // ao object-fit: cover do vídeo antigo), sem nenhum decode ou seek: é só
+  // um drawImage de um bitmap que já está pronto na memória.
+  function drawFrame(index) {
+    const img = images[index];
+
+    if (!img || !img.complete || !img.naturalWidth || index === lastFrameIndex) {
       return;
     }
 
-    if (Math.abs(time - lastTime) < minDelta) {
-      return;
-    }
+    lastFrameIndex = index;
 
-    performSeek(time);
+    const scale = Math.max(canvas.width / img.naturalWidth, canvas.height / img.naturalHeight);
+    const drawW = img.naturalWidth * scale;
+    const drawH = img.naturalHeight * scale;
+    const dx = (canvas.width - drawW) / 2;
+    const dy = (canvas.height - drawH) / 2;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, dx, dy, drawW, drawH);
   }
-
-  video.addEventListener("seeked", () => {
-    seekInFlight = false;
-
-    if (Math.abs(targetTime - lastTime) >= minDelta) {
-      performSeek(targetTime);
-    }
-  });
 
   function updateFrame() {
-    if (!duration) {
+    if (!framesReady) {
       return;
     }
 
-    const startY = startMarker.offsetTop;
-    const activationY = startY * 0.8;
-    const totalScrollable = document.documentElement.scrollHeight - window.innerHeight - startY;
     const scrollY = window.scrollY;
 
     if (scrollY < activationY) {
-      video.classList.remove("is-active");
+      canvas.classList.remove("is-active");
       return;
     }
 
-    video.classList.add("is-active");
+    canvas.classList.add("is-active");
 
     const progress = totalScrollable > 0
       ? Math.min(Math.max((scrollY - startY) / totalScrollable, 0), 1)
       : 1;
 
-    seekTo(progress * duration);
+    drawFrame(Math.round(progress * (count - 1)));
   }
-
-  video.addEventListener("loadedmetadata", () => {
-    duration = video.duration || 0;
-
-    video
-      .play()
-      .then(() => video.pause())
-      .catch(() => {});
-
-    updateFrame();
-  });
 
   window.addEventListener(
     "scroll",
@@ -92,30 +79,23 @@
     { passive: true }
   );
 
-  window.addEventListener("resize", () => window.requestAnimationFrame(updateFrame));
+  window.addEventListener("resize", () => {
+    computeLayout();
+    resizeCanvas();
+    lastFrameIndex = -1;
+    window.requestAnimationFrame(updateFrame);
+  });
 
-  function loadVideo() {
-    video.preload = "auto";
-    video.load();
-  }
+  computeLayout();
+  resizeCanvas();
 
-  if ("IntersectionObserver" in window) {
-    const loadObserver = new IntersectionObserver(
-      (entries, observer) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          observer.disconnect();
-          loadVideo();
-        }
-      },
-      { rootMargin: "0px 0px 100% 0px" }
-    );
-
-    loadObserver.observe(startMarker);
-  } else {
-    loadVideo();
-  }
-
-  updateFrame();
+  // O carregamento dos quadros é disparado pelo scrub-frames.js e aguardado
+  // pelo preloader.js, que já garante que estejam prontos antes do site
+  // aparecer — aqui só assinamos a mesma promise por segurança.
+  window.scrubFrames.ready.then(() => {
+    framesReady = true;
+    updateFrame();
+  });
 })();
 
 const revealMediaItems = document.querySelectorAll(".reveal-media");
